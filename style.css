@@ -1,0 +1,385 @@
+/* 1. Base styles */
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    color-scheme: light;
+    --background: #101827;
+    --surface: #182338;
+    --surface-light: #f3f6fb;
+    --text: #f5f7fc;
+    --muted: #c1ccdc;
+    --accent: #75d5ff;
+    --dark-text: #172033;
+    --border: #43516a;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--background);
+}
+
+a {
+    color: var(--accent);
+    text-underline-offset: 4px;
+}
+
+a:hover {
+    text-decoration-thickness: 2px;
+}
+
+h1, h2, h3 {
+    line-height: 1.25;
+}
+
+h1 {
+    font-size: clamp(2.3rem, 6vw, 4.2rem);
+    margin-block: 0.5rem 1rem;
+}
+
+h2 {
+    font-size: clamp(1.6rem, 4vw, 2.3rem);
+}
+
+p {
+    max-width: 70ch;
+}
+
+.container {
+    width: min(1100px, 90%);
+    margin-inline: auto;
+}
+
+/* 2. Keyboard skip link */
+.skip-link {
+    position: absolute;
+    top: 0.5rem;
+    left: -9999px;
+    z-index: 1000;
+    padding: 0.8rem 1rem;
+    color: #111;
+    background: #fff;
+}
+
+.skip-link:focus {
+    left: 0.5rem;
+}
+
+/* 3. Header and navigation */
+.site-header {
+    border-bottom: 1px solid var(--border);
+    background: var(--background);
+}
+
+.nav-container {
+    min-height: 82px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.logo {
+    font-size: 1.7rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.3rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+    color: var(--accent);
+}
+
+/* 4. Hero and page headings */
+.hero {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+    gap: 3rem;
+    padding-block: 6rem;
+}
+
+.hero h1 span {
+    color: var(--accent);
+}
+
+.hero h2 {
+    font-size: 1.4rem;
+    color: var(--muted);
+}
+
+.hero-description,
+.section-description {
+    color: var(--muted);
+    font-size: 1.08rem;
+}
+
+.eyebrow {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.hero-card,
+.info-card,
+.timeline-card,
+.form-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface);
+}
+
+.hero-card {
+    text-align: center;
+}
+
+.avatar {
+    display: grid;
+    place-items: center;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    color: var(--background);
+    background: var(--accent);
+    font-size: 2.3rem;
+    font-weight: 800;
+}
+
+.highlight {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.page-heading {
+    padding-block: 4rem 2rem;
+}
+
+.page-heading h1 {
+    font-size: clamp(2.3rem, 5vw, 3.5rem);
+}
+
+/* 5. Sections and cards */
+.section {
+    padding-block: 4rem;
+}
+
+.section-alt {
+    padding: 4rem 0;
+    background: var(--surface);
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.3rem;
+    margin-top: 2rem;
+}
+
+.info-card h2,
+.info-card h3 {
+    margin-top: 0;
+}
+
+.info-card p,
+.info-card li,
+.timeline-card p {
+    color: var(--muted);
+}
+
+.timeline {
+    display: grid;
+    gap: 1.2rem;
+    margin-top: 2rem;
+}
+
+.timeline-card {
+    border-left: 4px solid var(--accent);
+}
+
+.timeline-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    list-style: none;
+    padding: 0;
+}
+
+.tag-list li {
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 0.4rem 0.7rem;
+    color: var(--text);
+}
+
+/* 6. Buttons */
+.button {
+    display: inline-block;
+    padding: 0.75rem 1.2rem;
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    color: #101827;
+    background: var(--accent);
+    text-decoration: none;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #b0eaff;
+    border-color: #b0eaff;
+}
+
+.button-outline {
+    color: var(--accent);
+    background: transparent;
+}
+
+/* 7. Contact form */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: start;
+    gap: 3rem;
+}
+
+.contact-details {
+    font-style: normal;
+    overflow-wrap: anywhere;
+}
+
+.form-group {
+    margin-bottom: 1.3rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #7e8ca3;
+    border-radius: 7px;
+    color: var(--dark-text);
+    background: #fff;
+    font: inherit;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* 8. Visible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #ffdc73;
+    outline-offset: 4px;
+}
+
+/* 9. Footer */
+.site-footer {
+    border-top: 1px solid var(--border);
+    padding-block: 1.5rem;
+}
+
+.site-footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.site-footer p {
+    color: var(--muted);
+    margin: 0;
+}
+
+/* 10. Mobile responsive layout */
+@media (max-width: 760px) {
+    .nav-container {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding-block: 1rem;
+    }
+
+    .nav-links {
+        gap: 0.8rem 1rem;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding-block: 3.5rem;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .section,
+    .section-alt {
+        padding-block: 2.5rem;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
